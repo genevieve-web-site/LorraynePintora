@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --font-red-hat-display: var(--font-red-hat-display);
+  --font-red-hat-text: var(--font-red-hat-text);
+  
+  --color-brand-orange: #FE6600;
+  --color-brand-gold: #FBC405;
+  --color-brand-title: #FF620F;
+  --color-brand-dark: #2D1103;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: #171717;
+  font-family: var(--font-red-hat-text), sans-serif;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}
