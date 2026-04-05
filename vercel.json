@@ -1,5 +1,9 @@
 {
-  "installCommand": "cd lorrayne && npm ci",
-  "buildCommand": "cd lorrayne && npm run build",
-  "devCommand": "cd lorrayne && npm run dev"
+  "version": 2,
+  "builds": [
+    {
+      "src": "lorrayne/package.json",
+      "use": "@vercel/next"
+    }
+  ]
 }
