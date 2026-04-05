@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd lorrayne && npm ci",
+  "buildCommand": "cd lorrayne && npm run build",
+  "devCommand": "cd lorrayne && npm run dev"
+}
