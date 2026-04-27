@@ -26,7 +26,7 @@ export default function Home() {
       <div className="text-center mt-10 mb-8">
         <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden relative border-2 border-white shadow-md">
           <Image
-            src="/images/about/perfil.jpg"
+            src="/Imagens/LinkTree/perfil01.PNG"
             alt="Lorrayne Pintora"
             fill
             className="object-cover"

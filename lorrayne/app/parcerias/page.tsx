@@ -3,38 +3,79 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const parcerias = [
+const socialCards = [
+  {
+    platform: "Instagram",
+    handle: "@lorraynelucas_pintora",
+    stat1: "+223 mil",
+    label1: "Seguidores",
+    stat2: "Milhões",
+    label2: "de Engajamento",
+    img: "/Imagens/Marcas/PArcerias.jpeg",
+  },
+  {
+    platform: "TikTok",
+    handle: "@lorraynelucas",
+    stat1: "+50 mil",
+    label1: "Seguidores",
+    stat2: "Viral",
+    label2: "Alcance Nacional",
+    img: "/Imagens/Marcas/Evento.jpeg",
+  },
+  {
+    platform: "Facebook",
+    handle: "Lorrayne Lucas Pintora",
+    stat1: "+30 mil",
+    label1: "Seguidores",
+    stat2: "Ativo",
+    label2: "Comunidade",
+    img: "/Imagens/Marcas/Entrevista.jpeg",
+  },
+];
+
+const partnershipTypes = [
   {
     title: "Divulgação de Marcas",
     description:
-      "Sua marca em evidência para um público qualificado de pintores, arquitetos e clientes finais que buscam qualidade.",
+      "Sua marca em evidência para um público qualificado de pintores, arquitetos e clientes finais.",
     icon: "📣",
   },
   {
     title: "Review de Produtos",
     description:
-      "Teste técnico de tintas, rolos e ferramentas em obras reais, demonstrando a aplicação e o resultado final na prática.",
+      "Teste técnico de tintas, rolos e ferramentas em obras reais, demonstrando resultado na prática.",
     icon: "🛠️",
   },
   {
-    title: "Permutas Selecionadas",
+    title: "Permutas",
     description:
-      "Aberta a negociações de permuta que envolvam materiais de obra, equipamentos e melhorias que agreguem valor ao trabalho.",
+      "Negociações com materiais de obra, equipamentos e melhorias que agreguem valor ao trabalho.",
     icon: "🤝",
   },
 ];
 
+const partners = [
+  { name: "Maza", img: "/Imagens/Marcas/Maza.jpeg" },
+  { name: "CD Logístico", img: "/Imagens/Marcas/ParceriasCDLogistico.jpeg" },
+  { name: "Equipe Maza", img: "/Imagens/Marcas/EquipeMAza.jpeg" },
+  { name: "Brasilux", img: "/Imagens/logos/Lorrayne.jpeg" },
+  { name: "Parceria", img: "/Imagens/Marcas/Parcerias.jpeg" },
+  { name: "Maza Pro", img: "/Imagens/Marcas/MAza.jpeg" },
+];
+
 export default function Parcerias() {
-  const [scrollY, setScrollY] = useState(0);
+  const [partnerIdx, setPartnerIdx] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const t = setInterval(
+      () => setPartnerIdx((p) => (p + 1) % partners.length),
+      3500,
+    );
+    return () => clearInterval(t);
   }, []);
 
   return (
-    <main className="min-h-screen bg-slate-50 overflow-hidden">
+    <main className="min-h-screen bg-white">
       {/* Botão Voltar */}
       <nav className="fixed top-6 left-6 z-50">
         <Link
@@ -45,130 +86,238 @@ export default function Parcerias() {
         </Link>
       </nav>
 
-      {/* Header com Paralaxe */}
-      <header className="relative h-[40vh] md:h-[50vh] flex items-center justify-center bg-slate-900 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-40 transition-transform duration-100 ease-out"
-          style={{ transform: `scale(1.2) translateY(${scrollY * 0.1}px)` }}
-        >
+      {/* HERO */}
+      <section className="relative h-[45vh] md:h-[55vh] flex items-end">
+        <div className="absolute inset-0">
           <Image
-            src="/images/capaTree/1.png"
+            src="/Imagens/Marcas/Parcerias.jpeg"
             alt="Parcerias"
             fill
-            className="object-cover"
+            priority
+            className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
         </div>
-        <div className="relative z-10 text-center">
-          <span className="text-orange-500 font-mono tracking-[0.5em] uppercase text-[10px] mb-2 block">
+        <div className="relative z-10 px-8 md:px-20 pb-12 md:pb-20">
+          <span className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase mb-3 block">
             Colaborações
           </span>
-          <h1 className="text-5xl md:text-7xl font-black text-white uppercase italic">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-none">
             Parcerias
           </h1>
         </div>
-      </header>
+      </section>
 
-      {/* Seção de Informações */}
-      <section className="max-w-6xl mx-auto py-16 px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 uppercase mb-4">
-            Vamos construir juntos?
+      {/* REDES SOCIAIS */}
+      <section className="py-16 md:py-24 px-8 md:px-20 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <span className="text-orange-600 font-bold tracking-widest text-[22px] uppercase mb-3 block">
+            Presença digital
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+            Uma audiência real que engaja
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
-            Busco parceiros que prezam pela excelência e inovação no mundo da
-            pintura. Transforme sua marca em autoridade através de conteúdos
-            reais e técnicos.
-          </p>
         </div>
 
-        {/* Grid de Cards de Parceria */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {parcerias.map((p, index) => (
+        {/* Mobile: scroll horizontal / Desktop: grid 3 cols */}
+        <div className="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scroll-pl-8 -mx-8 px-8 md:mx-0 md:px-0">
+          {socialCards.map((s, i) => (
             <div
-              key={index}
-              className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group"
+              key={i}
+              className="min-w-[110vw] md:min-w-0 snap-start flex-shrink-0 md:flex-shrink bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300 inline-block">
-                {p.icon}
+              <div className="relative h-72 md:h-110 overflow-hidden">
+                <Image
+                  src={s.img}
+                  alt={s.platform}
+                  fill
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <span className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white font-extrabold text-sm px-3 py-1 rounded-full">
+                  {s.platform}
+                </span>
+                <span className="absolute bottom-4 left-4 text-white/80 text-xs">
+                  {s.handle}
+                </span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tight">
-                {p.title}
-              </h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                {p.description}
-              </p>
+              <div className="p-5 grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <p className="text-2xl font-black text-slate-900">
+                    {s.stat1}
+                  </p>
+                  <p className="text-xs text-orange-600 font-bold uppercase tracking-widest mt-1">
+                    {s.label1}
+                  </p>
+                </div>
+                <div className="text-center border-l border-gray-100">
+                  <p className="text-2xl font-black text-slate-900">
+                    {s.stat2}
+                  </p>
+                  <p className="text-xs text-orange-600 font-bold uppercase tracking-widest mt-1">
+                    {s.label2}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Card de Contato - Betim, MG */}
-        <div className="bg-slate-900 rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-black uppercase mb-6">
-                Informações de <span className="text-orange-500">Contato</span>
-              </h3>
-
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
-                    📍
-                  </div>
-                  <p className="text-sm font-light">Betim — Minas Gerais</p>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
-                    📧
-                  </div>
-                  <p className="text-sm font-light">
-                    contato@lorraynelucas.com.br
+      {/* TIPOS DE PARCERIA - cards menores */}
+      <section className="bg-gray-50 py-16 md:py-20 px-8 md:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <span className="text-orange-600 font-bold tracking-widest text-[22px] uppercase mb-3 block">
+              Como trabalhar juntos
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">
+              Modalidades de parceria
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {partnershipTypes.map((p, i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex gap-4 items-start"
+              >
+                <span className="text-3xl flex-shrink-0">{p.icon}</span>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 mb-1">
+                    {p.title}
+                  </h3>
+                  <p className="text-slate-500 text-[16px] leading-relaxed">
+                    {p.description}
                   </p>
                 </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
-                    📱
-                  </div>
-                  <p className="text-sm font-light">(37) 8828-7934</p>
-                </div>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <a
-                href="https://wa.me/553788287934"
-                target="_blank"
-                className="bg-orange-600 hover:bg-orange-500 text-center py-5 rounded-2xl font-bold uppercase tracking-widest transition-all shadow-lg active:scale-95"
-              >
-                Chamar no WhatsApp
-              </a>
-              <a
-                href="mailto:contato@lorraynelucas.com.br"
-                className="bg-white text-slate-900 hover:bg-gray-100 text-center py-5 rounded-2xl font-bold uppercase tracking-widest transition-all shadow-lg"
-              >
-                Enviar E-mail
-              </a>
-            </div>
+            ))}
           </div>
-
-          {/* Decoração de fundo do card */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
         </div>
       </section>
 
-      <footer className="bg-white py-10 text-center border-t border-gray-100">
-        <p className="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-[0.4em]">
-          © 2024 Lorrayne Lucas • Especialista em Acabamentos Finos
+      {/* CARROSSEL DE PARCEIROS */}
+      <section className="py-16 md:py-24 px-8 md:px-20 max-w-7xl mx-auto">
+        <div className="mb-10">
+          <span className="text-orange-600 font-bold tracking-widest text-[22px] uppercase mb-3 block">
+            Quem confia no trabalho
+          </span>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900">
+            Parceiros
+          </h2>
+        </div>
+
+        <div className="relative">
+          {/* Track */}
+          <div className="flex gap-5 overflow-hidden">
+            {[0, 1, 2].map((offset) => {
+              const idx = (partnerIdx + offset) % partners.length;
+              const p = partners[idx];
+              return (
+                <div
+                  key={offset}
+                  className="flex-1 min-w-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                >
+                  <div className="relative h-70 md:h-110">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover object-center"
+                    />
+                  </div>
+                  <div className="p-4 text-center">
+                    <div className="w-6 h-0.5 bg-orange-500 mx-auto mb-2 rounded-full" />
+                    <p className="font-extrabold text-slate-900 text-sm">
+                      {p.name}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {partners.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPartnerIdx(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === partnerIdx ? "w-6 bg-orange-500" : "w-2 bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section className="bg-slate-900 py-20 md:py-28 px-8 md:px-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="text-orange-500 font-bold tracking-widest text-xs uppercase mb-4 block">
+              Vamos conversar
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 leading-tight">
+              Quer ser um parceiro?
+            </h2>
+            <div className="space-y-5">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
+                  📍
+                </div>
+                <p className="text-slate-300 text-sm">
+                  Divinópolis — Minas Gerais
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
+                  📱
+                </div>
+                <p className="text-slate-300 text-sm">(37) 8828-7934</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
+                  📧
+                </div>
+                <p className="text-slate-300 text-sm">
+                  contato@lorraynelucas.com.br
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <a
+              href="https://wa.me/553788287934"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-orange-600 hover:bg-orange-500 text-white text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all shadow-lg text-sm"
+            >
+              Chamar no WhatsApp →
+            </a>
+            <a
+              href="mailto:contato@lorraynelucas.com.br"
+              className="bg-white/10 hover:bg-white/20 text-white text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all text-sm"
+            >
+              Enviar E-mail
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-slate-900 border-t border-white/10 py-12 px-8 text-center">
+        <p className="text-gray-400 text-xs">
+          Desenvolvido por{" "}
+          <a
+            href="https://www.genevieve.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-orange-500 transition-colors"
+          >
+            Genevieve WebSite
+          </a>
         </p>
-        <a
-          href="https://www.genevieve.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-[0.4em] inline-block hover:text-orange-600 transition-colors"
-        >
-          Desenvolvido por Genevieve WebSite
-        </a>
       </footer>
     </main>
   );
