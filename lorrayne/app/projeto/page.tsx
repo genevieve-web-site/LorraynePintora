@@ -27,6 +27,33 @@ export default function ProjetoSocial() {
     };
   }, []);
 
+  // Função genérica para enviar os dados ao Netlify Forms via POST
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Converte os dados para o formato x-www-form-urlencoded exigido pelo Netlify
+    const body = new URLSearchParams(formData as any).toString();
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body,
+      });
+
+      if (response.ok) {
+        alert("Dados enviados com sucesso!");
+        form.reset();
+      } else {
+        alert("Ocorreu um erro ao enviar. Tente novamente.");
+      }
+    } catch (error) {
+      alert("Erro de conexão ao enviar o formulário.");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-slate-50 overflow-hidden">
       {/* Botão Voltar */}
@@ -93,14 +120,11 @@ export default function ProjetoSocial() {
               Mora em Betim ou região? Conte sua história para nossa análise.
             </p>
 
-            {/* Configuração Netlify Forms */}
             <form
               name="receber-ajuda"
-              method="POST"
-              data-netlify="true"
+              onSubmit={handleSubmit}
               className="space-y-4"
             >
-              {/* Input oculto obrigatório para Next.js */}
               <input type="hidden" name="form-name" value="receber-ajuda" />
 
               <input
@@ -161,14 +185,11 @@ export default function ProjetoSocial() {
               Doe materiais, mão de obra ou patrocine uma transformação.
             </p>
 
-            {/* Configuração Netlify Forms */}
             <form
               name="ser-parceiro"
-              method="POST"
-              data-netlify="true"
+              onSubmit={handleSubmit}
               className="space-y-4"
             >
-              {/* Input oculto obrigatório para Next.js */}
               <input type="hidden" name="form-name" value="ser-parceiro" />
 
               <input
