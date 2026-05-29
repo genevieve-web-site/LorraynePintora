@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { submitToNetlify } from "./actions";
 import { useEffect, useState } from "react";
 
 const bgImages = [
@@ -28,30 +29,21 @@ export default function ProjetoSocial() {
   }, []);
 
   // Função genérica para enviar os dados ao Netlify Forms via POST
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    formName: string,
+  ) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Converte os dados para o formato x-www-form-urlencoded exigido pelo Netlify
-    const body = new URLSearchParams(formData as any).toString();
+    const result = await submitToNetlify(formName, formData);
 
-    try {
-      // Envia para o endpoint padrão para garantir o processamento do Netlify Forms
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body,
-      });
-
-      if (response.ok) {
-        alert("Dados enviados com sucesso!");
-        form.reset();
-      } else {
-        alert("Ocorreu um erro ao enviar. Tente novamente.");
-      }
-    } catch (error) {
-      alert("Erro de conexão ao enviar o formulário.");
+    if (result.success) {
+      alert("Dados enviados com sucesso!");
+      form.reset();
+    } else {
+      alert("Ocorreu um erro ao enviar. Verifique os dados e tente novamente.");
     }
   };
 
@@ -122,12 +114,7 @@ export default function ProjetoSocial() {
             </p>
 
             <form
-              name="receber-ajuda"
-              method="POST"
-              action="/__forms.html"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
+              onSubmit={(e) => handleFormSubmit(e, "receber-ajuda")}
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="receber-ajuda" />
@@ -192,12 +179,7 @@ export default function ProjetoSocial() {
             </p>
 
             <form
-              name="ser-parceiro"
-              method="POST"
-              action="/__forms.html"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
+              onSubmit={(e) => handleFormSubmit(e, "ser-parceiro")}
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="ser-parceiro" />
