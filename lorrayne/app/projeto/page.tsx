@@ -37,8 +37,8 @@ export default function ProjetoSocial() {
     const body = new URLSearchParams(formData as any).toString();
 
     try {
-      // Alterado de "/" para "/__forms.html" para enviar direto ao espelho estático
-      const response = await fetch("/__forms.html", {
+      // Envia para o endpoint padrão para garantir o processamento do Netlify Forms
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body,
@@ -123,10 +123,15 @@ export default function ProjetoSocial() {
 
             <form
               name="receber-ajuda"
+              method="POST"
+              action="/__forms.html"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="receber-ajuda" />
+              <input type="hidden" name="bot-field" />
 
               <input
                 type="text"
@@ -188,10 +193,15 @@ export default function ProjetoSocial() {
 
             <form
               name="ser-parceiro"
+              method="POST"
+              action="/__forms.html"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="space-y-4"
             >
               <input type="hidden" name="form-name" value="ser-parceiro" />
+              <input type="hidden" name="bot-field" />
 
               <input
                 type="text"
