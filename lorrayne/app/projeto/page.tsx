@@ -17,7 +17,6 @@ export default function ProjetoSocial() {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
 
-    // Timer para o carrossel de fundo (4 segundos)
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % bgImages.length);
     }, 4000);
@@ -40,7 +39,7 @@ export default function ProjetoSocial() {
         </Link>
       </nav>
 
-      {/* Hero Section: O Propósito */}
+      {/* Hero Section */}
       <header className="relative h-[60vh] flex items-center justify-center bg-slate-900 overflow-hidden">
         <div
           className="absolute inset-0 opacity-40 transition-transform duration-100 ease-out"
@@ -61,7 +60,7 @@ export default function ProjetoSocial() {
             Colorindo <br />{" "}
             <span className="text-orange-500 italic">Vidas</span>
           </h1>
-          <p className="text-white/70 mt-0 bg-white/10  max-w-xl mx-auto font-light text-sm md:text-base leading-relaxed">
+          <p className="text-white/70 mt-0 bg-white/10 max-w-xl mx-auto font-light text-sm md:text-base leading-relaxed">
             Lorrayne Lucas e equipe transformando lares em Betim e região. Mais
             que tinta, entregamos dignidade e esperança para mulheres e famílias
             que precisam.
@@ -72,18 +71,18 @@ export default function ProjetoSocial() {
                 .getElementById("ajudar")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="mt-8  mb-6 px-10 py-4 bg-orange-600 text-white font-bold text-sm md:text-base rounded-full shadow-2xl hover:bg-blue-600  hover:scale-105 transition-all duration-300 active:scale-95 uppercase tracking-widest border border-white/10"
+            className="mt-8 mb-6 px-10 py-4 bg-orange-600 text-white font-bold text-sm md:text-base rounded-full shadow-2xl hover:bg-blue-600 hover:scale-105 transition-all duration-300 active:scale-95 uppercase tracking-widest border border-white/10"
           >
             Seja um voluntário
           </button>
         </div>
       </header>
 
-      <section className="max-w-7xl mx-auto py-20 px-6">
+      <section id="ajudar" className="max-w-7xl mx-auto py-20 px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* FORMULÁRIO 1: QUERO MINHA CASA COLORIDA */}
           <div className="bg-orange-600 p-8 md:p-12 rounded-[3rem] shadow-xl border border-orange-100 relative overflow-hidden">
-            <div className="absolute top-0  right-0 p-8 text-6xl  font-black italic text-white/30 uppercase pointer-events-none">
+            <div className="absolute top-0 right-0 p-8 text-6xl font-black italic text-white/30 uppercase pointer-events-none">
               Preciso
             </div>
 
@@ -94,23 +93,40 @@ export default function ProjetoSocial() {
               Mora em Betim ou região? Conte sua história para nossa análise.
             </p>
 
-            <form className="space-y-4">
+            {/* Configuração Netlify Forms */}
+            <form
+              name="receber-ajuda"
+              method="POST"
+              data-netlify="true"
+              className="space-y-4"
+            >
+              {/* Input oculto obrigatório para Next.js */}
+              <input type="hidden" name="form-name" value="receber-ajuda" />
+
               <input
                 type="text"
+                name="nome"
+                required
                 placeholder="Seu Nome Completo"
                 className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
               />
               <input
                 type="text"
+                name="endereco"
+                required
                 placeholder="Seu Endereço / Bairro"
                 className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
               />
               <input
                 type="tel"
+                name="whatsapp"
+                required
                 placeholder="WhatsApp para contato"
                 className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none transition-all"
               />
               <textarea
+                name="historia"
+                required
                 placeholder="Conte-nos sua história e por que sua casa precisa dessa transformação..."
                 rows={5}
                 className="w-full p-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none transition-all resize-none"
@@ -138,38 +154,61 @@ export default function ProjetoSocial() {
               Ajudar
             </div>
 
-            <h2 className="text-3xl mt-12  font-black mb-2 uppercase italic">
+            <h2 className="text-3xl mt-12 font-black mb-2 uppercase italic">
               Ser um Parceiro
             </h2>
             <p className="text-slate-400 mb-8 font-light text-sm">
               Doe materiais, mão de obra ou patrocine uma transformação.
             </p>
 
-            <form className="space-y-4">
+            {/* Configuração Netlify Forms */}
+            <form
+              name="ser-parceiro"
+              method="POST"
+              data-netlify="true"
+              className="space-y-4"
+            >
+              {/* Input oculto obrigatório para Next.js */}
+              <input type="hidden" name="form-name" value="ser-parceiro" />
+
               <input
                 type="text"
+                name="nome-empresa"
+                required
                 placeholder="Nome ou Empresa"
                 className="w-full p-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all"
               />
-              <select className="w-full p-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all appearance-none">
-                <option className="text-slate-900">Como deseja ajudar?</option>
-                <option className="text-slate-900">
+              <select
+                name="tipo-ajuda"
+                required
+                className="w-full p-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all appearance-none"
+              >
+                <option value="" className="text-slate-900">
+                  Como deseja ajudar?
+                </option>
+                <option value="tintas-materiais" className="text-slate-900">
                   Doação de Tintas/Materiais
                 </option>
-                <option className="text-slate-900">
+                <option value="mao-de-obra" className="text-slate-900">
                   Voluntário (Mão de Obra)
                 </option>
-                <option className="text-slate-900">
+                <option value="patrocinio" className="text-slate-900">
                   Patrocínio Financeiro
                 </option>
-                <option className="text-slate-900">Outros</option>
+                <option value="outros" className="text-slate-900">
+                  Outros
+                </option>
               </select>
               <input
                 type="tel"
+                name="whatsapp"
+                required
                 placeholder="Seu WhatsApp"
                 className="w-full p-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all"
               />
               <textarea
+                name="contribuicao"
+                required
                 placeholder="Fale brevemente sobre como você ou sua empresa podem contribuir..."
                 rows={4}
                 className="w-full p-4 bg-white/10 border-none rounded-2xl focus:ring-2 focus:ring-orange-500 outline-none text-white transition-all resize-none"
@@ -193,7 +232,7 @@ export default function ProjetoSocial() {
         </div>
       </section>
 
-      {/* Footer: Betim/MG */}
+      {/* Footer */}
       <footer className="bg-white py-10 text-center border-t border-gray-100">
         <p className="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-[0.4em]">
           © 2024 Lorrayne Lucas • Especialista em Acabamentos Finos
