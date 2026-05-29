@@ -37,7 +37,8 @@ export default function ProjetoSocial() {
     const body = new URLSearchParams(formData as any).toString();
 
     try {
-      const response = await fetch("/", {
+      // Alterado de "/" para "/__forms.html" para enviar direto ao espelho estático
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body,
