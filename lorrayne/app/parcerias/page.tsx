@@ -6,30 +6,33 @@ import { useEffect, useState } from "react";
 const socialCards = [
   {
     platform: "Instagram",
-    handle: "@lorraynelucas_pintora",
-    stat1: "+223 mil",
+    handle: "@eu_pintoraprofissional",
+    url: "https://www.instagram.com/eu_pintoraprofissional/",
+    stat1: "+228 mil",
     label1: "Seguidores",
     stat2: "Milhões",
     label2: "de Engajamento",
-    img: "/Imagens/Marcas/PArcerias.jpeg",
+    img: "/Imagens/LinkTree/insta.jpeg",
   },
   {
     platform: "TikTok",
-    handle: "@lorraynelucas",
-    stat1: "+50 mil",
+    handle: "@eu_pintoraprofissional",
+    url: "https://www.tiktok.com/@eu_pintoraprofissional",
+    stat1: "+55 mil",
     label1: "Seguidores",
-    stat2: "Viral",
+    stat2: "Vira de Milhões",
     label2: "Alcance Nacional",
-    img: "/Imagens/Marcas/Evento.jpeg",
+    img: "/Imagens/LinkTree/tiktok.jpeg",
   },
   {
     platform: "Facebook",
-    handle: "Lorrayne Lucas Pintora",
-    stat1: "+30 mil",
+    handle: "Lorrayne Lucas",
+    url: "https://www.facebook.com/lorrayne.lucas.129/",
+    stat1: "+137 mil",
     label1: "Seguidores",
     stat2: "Ativo",
     label2: "Comunidade",
-    img: "/Imagens/Marcas/Entrevista.jpeg",
+    img: "/Imagens/LinkTree/face.jpeg",
   },
 ];
 
@@ -55,12 +58,9 @@ const partnershipTypes = [
 ];
 
 const partners = [
-  { name: "Maza", img: "/Imagens/Marcas/Maza.jpeg" },
-  { name: "CD Logístico", img: "/Imagens/Marcas/ParceriasCDLogistico.jpeg" },
-  { name: "Equipe Maza", img: "/Imagens/Marcas/EquipeMAza.jpeg" },
-  { name: "Brasilux", img: "/Imagens/logos/Lorrayne.jpeg" },
-  { name: "Parceria", img: "/Imagens/Marcas/Parcerias.jpeg" },
-  { name: "Maza Pro", img: "/Imagens/Marcas/MAza.jpeg" },
+  { name: "Maza", img: "/Imagens/Marcas/MAza.jpeg" },
+  { name: "Atlas", img: "/Imagens/Marcas/Evento.jpeg" },
+  { name: "Powertech", img: "/Imagens/Marcas/EquipeMAza.jpeg" },
 ];
 
 export default function Parcerias() {
@@ -90,19 +90,20 @@ export default function Parcerias() {
       <section className="relative h-[45vh] md:h-[55vh] flex items-end">
         <div className="absolute inset-0">
           <Image
-            src="/Imagens/Marcas/Parcerias.jpeg"
-            alt="Parcerias"
+            src="/images/Servicescapas/capaParceiros.jpg"
+            alt="Parcerias capa de fundo"
             fill
             priority
-            className="object-cover object-center"
+            sizes="100vw"
+            className="object-cover object-[50%_30%]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
         </div>
         <div className="relative z-10 px-8 md:px-20 pb-12 md:pb-20">
-          <span className="text-orange-500 font-bold tracking-[0.3em] text-xs uppercase mb-3 block">
+          <span className="text-white font-bold tracking-[0.3em] text-xs uppercase mb-3 block">
             Colaborações
           </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-none">
+          <h1 className="text-5xl md:text-8xl font-extrabold text-white leading-none">
             Parcerias
           </h1>
         </div>
@@ -119,19 +120,73 @@ export default function Parcerias() {
           </h2>
         </div>
 
-        {/* Mobile: scroll horizontal / Desktop: grid 3 cols */}
-        <div className="flex md:grid md:grid-cols-3 gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scroll-pl-8 -mx-8 px-8 md:mx-0 md:px-0">
+        {/* Mobile: carrossel em loop / Desktop: lista vertical */}
+        <div className="md:hidden -mx-8 px-8 overflow-hidden">
+          <div className="carousel-track">
+            {[...socialCards, ...socialCards].map((s, i) => (
+              <a
+                key={`${s.platform}-${i}`}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="carousel-item w-[85vw] bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100"
+              >
+                <div className="relative h-72 overflow-hidden">
+                  <Image
+                    src={s.img}
+                    alt={s.platform}
+                    fill
+                    priority={i === 0}
+                    sizes="(max-width: 768px) 85vw, 33vw"
+                    className="object-cover object-[50%_10%]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <span className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white font-extrabold text-sm px-3 py-1 rounded-full">
+                    {s.platform}
+                  </span>
+                  <span className="absolute bottom-4 left-4 text-white/80 text-xs">
+                    {s.handle}
+                  </span>
+                </div>
+                <div className="p-5 grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <p className="text-2xl font-black text-slate-900">
+                      {s.stat1}
+                    </p>
+                    <p className="text-xs text-orange-600 font-bold uppercase tracking-widest mt-1">
+                      {s.label1}
+                    </p>
+                  </div>
+                  <div className="text-center border-l border-gray-100">
+                    <p className="text-2xl font-black text-slate-900">
+                      {s.stat2}
+                    </p>
+                    <p className="text-xs text-orange-600 font-bold uppercase tracking-widest mt-1">
+                      {s.label2}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="hidden md:grid md:grid-cols-3 gap-5">
           {socialCards.map((s, i) => (
-            <div
+            <a
               key={i}
-              className="min-w-[110vw] md:min-w-0 snap-start flex-shrink-0 md:flex-shrink bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="relative h-72 md:h-110 overflow-hidden">
+              <div className="relative h-110 overflow-hidden">
                 <Image
                   src={s.img}
                   alt={s.platform}
                   fill
-                  className="object-cover object-center"
+                  priority={i === 0}
+                  sizes="(max-width: 768px) 85vw, 33vw"
+                  className="object-cover object-[50%_10%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <span className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white font-extrabold text-sm px-3 py-1 rounded-full">
@@ -159,7 +214,7 @@ export default function Parcerias() {
                   </p>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -208,21 +263,20 @@ export default function Parcerias() {
         </div>
 
         <div className="relative">
-          {/* Track */}
-          <div className="flex gap-5 overflow-hidden">
-            {[0, 1, 2].map((offset) => {
-              const idx = (partnerIdx + offset) % partners.length;
-              const p = partners[idx];
-              return (
+          {/* Mobile: carrossel em loop */}
+          <div className="md:hidden -mx-8 px-8 overflow-hidden">
+            <div className="carousel-track">
+              {[...partners, ...partners].map((p, i) => (
                 <div
-                  key={offset}
-                  className="flex-1 min-w-0 bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                  key={`${p.name}-${i}`}
+                  className="carousel-item w-[85vw] bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100"
                 >
-                  <div className="relative h-70 md:h-110">
+                  <div className="relative h-72">
                     <Image
                       src={p.img}
                       alt={p.name}
                       fill
+                      sizes="(max-width: 768px) 85vw, 33vw"
                       className="object-cover object-center"
                     />
                   </div>
@@ -233,12 +287,38 @@ export default function Parcerias() {
                     </p>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: grid */}
+          <div className="hidden md:grid md:grid-cols-3 gap-5">
+            {partners.map((p) => (
+              <div
+                key={p.name}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="relative h-110">
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 768px) 85vw, 33vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="p-4 text-center">
+                  <div className="w-6 h-0.5 bg-orange-500 mx-auto mb-2 rounded-full" />
+                  <p className="font-extrabold text-slate-900 text-sm">
+                    {p.name}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
+          <div className="hidden md:flex justify-center gap-2 mt-6">
             {partners.map((_, i) => (
               <button
                 key={i}
@@ -248,6 +328,47 @@ export default function Parcerias() {
                 }`}
               />
             ))}
+          </div>
+        </div>
+
+        <div className="mt-8 bg-slate-900 rounded-2xl overflow-hidden">
+          <div className="marquee-track py-4">
+            <div className="marquee-item">
+              <Image
+                src="/Imagens/logos/LOGO_POWERTECH_site.png"
+                alt="Logo Powertech"
+                width={200}
+                height={72}
+                className="h-8 w-auto"
+              />
+            </div>
+            <div className="marquee-item">
+              <Image
+                src="/Imagens/logos/logo-maza-white.svg"
+                alt="Logo Maza"
+                width={160}
+                height={48}
+                className="h-10 w-auto"
+              />
+            </div>
+            <div className="marquee-item">
+              <Image
+                src="/Imagens/logos/LOGO_POWERTECH_site.png"
+                alt="Logo Powertech"
+                width={200}
+                height={72}
+                className="h-8 w-auto"
+              />
+            </div>
+            <div className="marquee-item">
+              <Image
+                src="/Imagens/logos/logo-maza-white.svg"
+                alt="Logo Maza"
+                width={160}
+                height={48}
+                className="h-10 w-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -275,14 +396,14 @@ export default function Parcerias() {
                 <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
                   📱
                 </div>
-                <p className="text-slate-300 text-sm">(37) 8828-7934</p>
+                <p className="text-slate-300 text-sm">(37) 984037171</p>
               </div>
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 bg-orange-600/20 rounded-full flex items-center justify-center text-orange-500">
                   📧
                 </div>
                 <p className="text-slate-300 text-sm">
-                  contato@lorraynelucas.com.br
+                  contato.eupintora@gmail.com
                 </p>
               </div>
             </div>
@@ -297,7 +418,7 @@ export default function Parcerias() {
               Chamar no WhatsApp →
             </a>
             <a
-              href="mailto:contato@lorraynelucas.com.br"
+              href="mailto:contato.eupintora@gmail.com"
               className="bg-white/10 hover:bg-white/20 text-white text-center py-4 px-8 rounded-full font-bold uppercase tracking-widest transition-all text-sm"
             >
               Enviar E-mail

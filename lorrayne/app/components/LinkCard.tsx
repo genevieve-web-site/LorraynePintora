@@ -17,7 +17,7 @@ export default function LinkCard({
         src={bgImage}
         alt="Navegação"
         fill
-        className="object-cover"
+        className="object-cover object-[30%_center]"
         sizes="(max-width: 768px) 100vw, 448px"
         priority
       />

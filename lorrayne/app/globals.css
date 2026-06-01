@@ -8,11 +8,11 @@
 @theme {
   --font-red-hat-display: var(--font-red-hat-display);
   --font-red-hat-text: var(--font-red-hat-text);
-  
-  --color-brand-orange: #FE6600;
-  --color-brand-gold: #FBC405;
-  --color-brand-title: #FF620F;
-  --color-brand-dark: #2D1103;
+
+  --color-brand-orange: #fe6600;
+  --color-brand-gold: #fbc405;
+  --color-brand-title: #ff620f;
+  --color-brand-dark: #2d1103;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,10 +29,62 @@ body {
 }
 
 @keyframes pulse-slow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 3s infinite ease-in-out;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+@keyframes carousel-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-track {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: max-content;
+  animation: carousel-loop 22s linear infinite;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
 }

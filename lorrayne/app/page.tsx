@@ -3,25 +3,13 @@ import LinkCard from "./components/LinkCard";
 
 export default function Home() {
   const cards = [
-    {
-      href: "/sobre",
-      img: "/images/capaTree/1.jpg", // Card 1
-    },
-    {
-      href: "/servicos",
-      img: "/images/capaTree/2.jpg", // Card 2
-    },
-    {
-      href: "/projeto",
-      img: "/images/capaTree/3.jpg", // Card 3
-    },
-    {
-      href: "/parcerias",
-      img: "/images/capaTree/4.jpg", // Card 4
-    },
+    { href: "/sobre", img: "/images/capaTree/Tree1.jpg" },
+    { href: "/servicos", img: "/images/capaTree/Tree2.jpg" },
+    { href: "/projeto", img: "/images/capaTree/Tree3.jpg" },
+    { href: "/parcerias", img: "/images/capaTree/Tree4.jpg" },
   ];
   return (
-    <main className="min-h-screen w-full flex flex-col items-center bg-white p-6">
+    <main className="min-h-screen w-full flex flex-col items-center bg-#f7f9fa p-6">
       {/* Container do Perfil */}
       <div className="text-center mt-10 mb-8">
         <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 overflow-hidden relative border-2 border-white shadow-md">
