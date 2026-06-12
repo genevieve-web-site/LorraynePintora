@@ -94,6 +94,7 @@ export default function Parcerias() {
             alt="Parcerias capa de fundo"
             fill
             priority
+            quality={70}
             sizes="100vw"
             className="object-cover object-[50%_30%]"
           />
@@ -136,7 +137,8 @@ export default function Parcerias() {
                     src={s.img}
                     alt={s.platform}
                     fill
-                    priority={i === 0}
+                    quality={70}
+                    loading="lazy"
                     sizes="(max-width: 768px) 85vw, 33vw"
                     className="object-cover object-[50%_10%]"
                   />
@@ -184,7 +186,8 @@ export default function Parcerias() {
                   src={s.img}
                   alt={s.platform}
                   fill
-                  priority={i === 0}
+                  quality={70}
+                  loading="lazy"
                   sizes="(max-width: 768px) 85vw, 33vw"
                   className="object-cover object-[50%_10%]"
                 />
@@ -276,6 +279,8 @@ export default function Parcerias() {
                       src={p.img}
                       alt={p.name}
                       fill
+                      quality={70}
+                      loading="lazy"
                       sizes="(max-width: 768px) 85vw, 33vw"
                       className="object-cover object-center"
                     />
@@ -303,6 +308,8 @@ export default function Parcerias() {
                     src={p.img}
                     alt={p.name}
                     fill
+                    quality={70}
+                    loading="lazy"
                     sizes="(max-width: 768px) 85vw, 33vw"
                     className="object-cover object-center"
                   />

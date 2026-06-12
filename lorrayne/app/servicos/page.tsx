@@ -18,50 +18,72 @@ export default function Servicos() {
       </nav>
 
       {/* HERO */}
-      <section className="relative h-[50vh] md:h-[70vh] flex items-end">
-        <div className="absolute inset-0">
-          <Image
-            src="/Imagens/AboutLorrayne/LorraynePintandooTeto.jpeg"
-            alt="Serviços Lorrayne Lucas"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+      <section className="relative overflow-visible bg-orange-500 pt-32 pb-20 md:pt-36 md:pb-24">
+        <div className="absolute inset-x-0 bottom-2 pointer-events-none overflow-hidden">
+          <div
+            className="marquee-track py-3 opacity-20 text-white/50 text-4xl md:text-6xl font-black uppercase tracking-[0.2em]"
+            style={{ animationDuration: "77s" }}
+          >
+            {[...services, ...services].map((s, i) => (
+              <span key={`${s.slug}-${i}`} className="whitespace-nowrap">
+                {s.title}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="relative z-10 px-8 md:px-20 pb-12 md:pb-20">
-          <span className="text-orange-100 font-bold tracking-[0.3em] text-xs uppercase mb-4 inline-block bg-orange-500 px-3 py-1 rounded-md backdrop-blur-sm">
-            O que oferecemos
-          </span>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-none">
-            Nossos Serviços
-          </h1>
+
+        <div className="relative z-10 px-8 md:px-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+          <div className="pt-0 md:pt-2 lg:pt-4 lg:-translate-y-10">
+            <span className="text-orange-50 font-bold tracking-[0.35em] text-xs uppercase mb-5 inline-block bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+              O que oferecemos
+            </span>
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-none max-w-3xl drop-shadow-sm">
+              Nossos Serviços
+            </h1>
+            <p className="mt-6 max-w-2xl text-white/90 text-lg md:text-[22px] leading-relaxed">
+              Pintura, acabamento e cuidado em cada detalhe para transformar
+              ambientes com qualidade e presença.
+            </p>
+          </div>
+
+          <div className="relative lg:-mt-10 lg:translate-y-16 lg:mb-[-6rem] z-20">
+            <div className="rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/20 bg-white/10 backdrop-blur-sm">
+              <Image
+                src="/Imagens/AboutLorrayne/LorraynePintandooTeto.jpeg"
+                alt="Serviços Lorrayne Lucas"
+                width={900}
+                height={1100}
+                priority
+                className="h-[340px] md:h-[520px] w-full object-cover object-center"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* INTRO */}
-      <section className="py-12 md:py-12 px-8 md:px-20 max-w-4xl mx-auto text-center">
-        <p className="text-slate-600 text-lg md:text-[22px] leading-relaxed">
-          Da pintura residencial aos efeitos mais sofisticados, cada serviço é
-          entregue com técnica, dedicação e o padrão de excelência que só
-          Lorrayne Lucas oferece.
-        </p>
+      <section className="pt-24 pb-14 md:pt-32 md:pb-16 px-8 md:px-20 max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-slate-900 leading-tight">
+          Garantia 100% em todos os Serviços e Produtos
+        </h2>
+        <div className="mt-5 mx-auto h-1 w-24 rounded-full bg-orange-500" />
       </section>
 
       {/* GRID DE SERVIÇOS */}
       <section className="pb-20 md:pb-28 px-8 md:px-12 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-8">
           {services.map((s) => (
             <Link
               key={s.slug}
               href={`/servicos/${s.slug}`}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="group flex flex-col md:flex-row overflow-hidden rounded-3xl bg-white shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative order-1 h-64 md:h-auto md:w-[38%] min-h-[280px] overflow-hidden">
                 <Image
                   src={s.cover}
                   alt={s.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 38vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4">
@@ -72,12 +94,13 @@ export default function Servicos() {
                   </span>
                 </div>
               </div>
-              <div className="p-6">
+
+              <div className="flex-1 p-7 md:p-10 flex flex-col justify-center order-2">
                 <div className="w-8 h-0.5 bg-orange-500 mb-4 rounded-full" />
-                <h3 className="text-xl font-extrabold text-slate-900 mb-3 leading-tight">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 leading-tight">
                   {s.title}
                 </h3>
-                <p className="text-slate-600 text-[18px] leading-relaxed mb-5">
+                <p className="text-slate-600 text-[18px] md:text-[19px] leading-relaxed mb-6 max-w-2xl">
                   {s.short}
                 </p>
                 <span className="text-orange-600 font-bold text-sm uppercase tracking-widest group-hover:text-orange-500 transition-colors">
@@ -170,6 +193,7 @@ export default function Servicos() {
                           src={m.img}
                           alt={m.nome}
                           fill
+                          sizes="(max-width: 768px) 70vw, 25vw"
                           className="object-cover object-center"
                         />
                       </div>

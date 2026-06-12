@@ -7,64 +7,47 @@ export type Service = {
   short: string;
   cover: string;
   hero: string;
-  intro: string;
   items: ServiceItem[];
   gallery: string[];
+  galleryCasaNaPraia?: string[];
 };
 
 export const services: Service[] = [
   {
-    slug: "pinturas-decorativas",
-    title: "Pinturas Decorativas e Efeitos Premium",
+    slug: "marmorizacao",
+    title: "Marmorização",
     category: "Alto Padrão",
     short:
-      "Marmorização, Cimento Queimado, Cristalgrau e acabamentos em gesso de alto valor estético.",
-    cover: "/Imagens/serviços/Loja.jpeg",
+      "Polimento em marmore e brilho intenso.",
+    cover: "/Imagens/serviços/Marmorizacao.jpeg",
     hero: "/Imagens/serviços/efeito.jpeg",
-    intro:
-      "Este nicho agrega os serviços de alto valor agregado e estética refinada, transformando ambientes comuns em espaços sofisticados e únicos.",
     items: [
       {
-        name: "Pedras Naturais Premium",
-        desc: "Mais de 400 cores + acabamento com brilho especial que deixa o efeito ultra sofisticado.",
-      },
-      {
-        name: "Marmorização",
-        desc: "Pintura que imita pedras naturais com polimento e alto brilho.",
-      },
-      {
-        name: "Cimento Queimado",
-        desc: "Acabamento moderno e urbano para paredes internas e externas.",
+        name: "Polimentos",
+        desc: "Acabamento com brilho especial que deixa o efeito ultra sofisticado.",
       },
 
-      {
-        name: "Acabamentos em Gesso",
-        desc: "Pintura e finalização de sancas, molduras e tetos.",
-      },
     ],
     gallery: [
       "/Imagens/serviços/Marmorizacao.jpeg",
-      "/Imagens/serviços/CimentoQueimado.jpeg",
-      "/Imagens/serviços/efeito3.jpeg",
-      "/Imagens/serviços/Banheiro.jpeg",
-      "/Imagens/serviços/GessoTeto.jpeg",
+      "/Imagens/serviços/marmores.jpeg",
+   
+    
       "/Imagens/serviços/Marmore.jpeg",
     ],
   },
   {
-    slug: "residencial-comercial",
-    title: "Pintura Residencial e Comercial",
+    slug: "pintura-mecanizada",
+    title: "Pintura Mecanizada",
     category: "Residencial",
     short:
-      "Paredes, tetos, fachadas e esquadrias. Proteção e renovação com qualidade garantida.",
-    cover: "/Imagens/serviços/escadamarmoreeGesso.jpeg",
-    hero: "/Imagens/serviços/Interior.jpeg",
-    intro:
-      "O serviço bem feito, focado em proteção e renovação de ambientes residenciais e comerciais, com acabamento impecável e durabilidade.",
+      " Acabamento de Alto Padrão, Sistema Airless e máquinas de pintar. ",
+    cover: "/Imagens/serviços/Escadas2.jpeg",
+    hero: "/Imagens/serviços/Escadas2.jpeg",
     items: [
       {
         name: "Pintura de Paredes e Tetos",
-        desc: "Aplicação de tintas acrílicas, látex e acetinadas.",
+        desc: "Aplicação de tintas .",
       },
       {
         name: "Pintura de Fachadas",
@@ -76,24 +59,20 @@ export const services: Service[] = [
       },
     ],
     gallery: [
-      "/Imagens/serviços/CasaAltoPadrao.jpeg",
-      "/Imagens/serviços/Interior.jpeg",
-      "/Imagens/serviços/AreaExterna.jpeg",
-      "/Imagens/serviços/Escadas.jpeg",
-      "/Imagens/serviços/Comercial.jpeg",
-      "/Imagens/serviços/Externo3.jpeg",
+      "/Imagens/AboutLorrayne/LorraynePintandooTeto.jpeg",
+      "/Imagens/serviços/Comercial2.jpeg",
+      "/Imagens/serviços/GessoTeto.jpeg",
+      "/images/Servicescapas/10.jpg",
     ],
   },
   {
     slug: "industrial-revestimento",
-    title: "Pintura Industrial e Revestimento de Piso",
+    title: "Pintura Industrial ",
     category: "Industrial",
     short:
-      "Pisos epóxi, estruturas metálicas e quadras esportivas com máxima resistência.",
-    cover: "/Imagens/serviços/PisoIndustrial.jpeg",
+      "Pisos epóxi, revitalizações : Condomínios, Escolas e Empresas. ",
+    cover: "/Imagens/serviços/Escola.jpeg",
     hero: "/Imagens/serviços/PisoIndustrial.jpeg",
-    intro:
-      "Focado em alta resistência e grandes áreas, com soluções técnicas para ambientes industriais, comerciais e esportivos.",
     items: [
       {
         name: "Pisos Industriais (Epóxi/Poliuretano)",
@@ -107,59 +86,105 @@ export const services: Service[] = [
         name: "Quadras Esportivas",
         desc: "Pintura estratificada para alta abrasão e demarcação técnica.",
       },
+       {
+        name: "Faxas Comerciais",
+        desc: "Profissionalismo e dedicação.",
+      },
     ],
     gallery: [
+      "/Imagens/serviços/Comercial.jpeg",
       "/Imagens/serviços/PisoIndustrial.jpeg",
-      "/Imagens/serviços/PisoIndustrial.jpeg",
-      "/Imagens/serviços/Quadra.jpeg",
+      "/Imagens/serviços/loja.jpeg",
       "/Imagens/serviços/Quadra3.jpeg",
     ],
+  },
+  {
+    slug: "residencial",
+    title: "Casas de Alto Padrão ",
+    category: "Residencial",
+    short:
+      " Pintura internas e Externas. Cimento Queimado, Gesso, Muros, Pisos, Efeitos modernos. Apastamentos, Chacaras, Casa na Praia e muito mais ",
+    cover: "/Imagens/serviços/ACasaRustica.jpeg",
+    hero: "/Imagens/serviços/portaVerniz.jpeg",
+    items: [
+      {
+        name: "Pisos",
+        desc: "Piso Liquidos, Restauração e Revitalização.",
+      },
+      {
+        name: "Calçadas e Muros ",
+        desc: "Pintura com tinta Grafeno e impermeabilização de telhas de barro ou concreto.",
+      },
+    ],
+    galleryCasaNaPraia: [
+      "/Imagens/serviços/CozinhaRustica.jpeg",
+      "/Imagens/serviços/Escadas.jpeg",
+      "/Imagens/serviços/FrenteCasaRustica.jpeg",
+      "/Imagens/serviços/ParedeCasaRustica.jpeg",
+      "/Imagens/serviços/JaneladaCasaRustica.jpeg",
+      "/Imagens/serviços/ParededaCasaRusticaCozinha.jpeg",
+    ],
+    gallery: [
+      "/Imagens/serviços/AreaExterna2.jpeg",
+      "/Imagens/serviços/CasaAltoPadrao.jpeg",
+      "/Imagens/serviços/CimentoQueimado3.jpeg",
+      "/Imagens/serviços/escadamarmoreeGesso.jpeg",
+      "/Imagens/serviços/Interior.jpeg"   
+    
+    ],
+    
   },
   {
     slug: "madeiras",
     title: "Tratamento e Vernização de Madeiras",
     category: "Madeiras",
     short:
-      "Vernização premium e impermeabilização para portas, janelas, decks e telhados.",
-    cover: "/Imagens/serviços/PortadeVerniz2.jpeg",
+      "Vernização premium e Laqueamento para portas, janelas, decks e telhados.",
+    cover: "/Imagens/serviços/Verniz.jpeg",
     hero: "/Imagens/serviços/portaVerniz.jpeg",
-    intro:
-      "Especializado na recuperação e proteção de fibras naturais, preservando a beleza e aumentando a vida útil da madeira.",
     items: [
       {
-        name: "Vernização Premium",
-        desc: "Aplicação de verniz com diferentes tonalidades (Imbuia, Mogno, Cedro) em portas, janelas e decks.",
+        name: "Pisos Decks",
+        desc: " Restauração e Revitalização.",
       },
       {
         name: "Tratamento de Telhados",
-        desc: "Pintura e impermeabilização de telhas de barro ou concreto.",
+        desc: " Resina e blindagem.",
+      },
+       {
+        name: "Potão, Portas e Janelas",
+        desc: " Lixamento, Verniz e brilho",
       },
     ],
     gallery: [
+       "/Imagens/serviços/telhado.jpeg",
+      "/Imagens/serviços/telhado.mp4",
       "/Imagens/serviços/portaVerniz.jpeg",
-      "/Imagens/serviços/Verniz.jpeg",
       "/Imagens/serviços/PortadeVerniz2.jpeg",
-      "/Imagens/serviços/telhado.jpeg",
+     
     ],
   },
+  
   {
     slug: "metais-serralheria",
-    title: "Pintura de Metais e Serralheria",
+    title: "Pintura em Metais",
     category: "Metais",
     short:
-      "Portões, grades e estruturas metálicas com esmalte anticorrosivo de longa duração.",
+      "Tratamento anticorrosivo e pinturas  : Portoẽs, Grades, Portas, Janelas, Escadas e estruturas metálicas  de longa duração.",
     cover: "/Imagens/serviços/Portao.jpeg",
     hero: "/Imagens/serviços/portao2.jpeg",
-    intro:
-      "Foco em durabilidade e acabamento liso para metais, com proteção anticorrosiva que garante anos de vida útil.",
     items: [
       {
         name: "Portões e Grades",
-        desc: "Pintura com esmalte sintético ou automotivo para prevenir ferrugem.",
+        desc: " ",
+      },
+            {
+        name: "Janelas, Portas, Escadas e Corrimo ",
+        desc: "",
       },
       {
         name: "Containers e Revestimentos Metálicos",
-        desc: "Pintura de chapas onduladas e estruturas de segurança.",
+        desc: "",
       },
     ],
     gallery: [
@@ -167,6 +192,8 @@ export const services: Service[] = [
       "/Imagens/serviços/portao2.jpeg",
       "/Imagens/serviços/portao3.jpeg",
       "/Imagens/serviços/PortaoBranco.jpeg",
+      "/Imagens/serviços/TintaAOleo.jpeg",
+      "/Imagens/serviços/escadaMetal.jpg",
     ],
   },
   {
@@ -174,26 +201,24 @@ export const services: Service[] = [
     title: "Manutenção e Recuperação de Superfícies",
     category: "Manutenção",
     short:
-      "Tratamento de tijolos, remoção de umidade e impermeabilização de superfícies deterioradas.",
-    cover: "/Imagens/serviços/Quadra3.jpeg",
+      "Tratamento e reformas : Alto Padrão, Textura Protegida, Pós Obra e impermeabilização de superfícies deterioradas.",
+    cover: "/Imagens/serviços/Externo3.jpeg",
     hero: "/Imagens/serviços/ACasaRustica.jpeg",
-    intro:
-      "Recuperação completa de superfícies deterioradas, garantindo uma base sólida e esteticamente agradável para a pintura final.",
     items: [
       {
-        name: "Tratamento de Tijolos à Vista",
-        desc: "Limpeza e aplicação de resina para tijolos expostos.",
+        name: "Pós-Obra",
+        desc: "Limpeza",
       },
       {
-        name: "Remoção de Umidade e Impermeabilização",
+        name: "Restaurações Técnicas",
         desc: "Preparo completo de superfícies antes da pintura final.",
       },
     ],
     gallery: [
-      "/Imagens/serviços/ACasaRustica.jpeg",
-      "/Imagens/serviços/ParedeCasaRustica.jpeg",
-      "/Imagens/serviços/FrenteCasaRustica.jpeg",
       "/Imagens/serviços/ParedeGesso.jpeg",
+      "/Imagens/serviços/filhoMAza.jpeg",
+      "/Imagens/serviços/teto3.jpeg",
+      "/Imagens/serviços/TetodeGesso2.jpeg",
     ],
   },
 ];
